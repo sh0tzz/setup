@@ -8,13 +8,13 @@ sudo apt install xclip -y
 sudo apt install tree -y
 sudo apt install tmux -y
 sudo apt install qemu -y
-sudo apt install virt-manger -y
+sudo apt install virt-manager -y
 sudo snap install brave
 sudo snap install code --classic
 sudo snap install discord
 
 # kitty terminal emulator
-sudo apt install kitty
+sudo apt install kitty -y
 mkdir ~/.config/kitty
 cp ./dotfiles/kitty.conf ~/.config/kitty/kitty.conf
 curl -o ~/Downloads/iosevka-term-font.zip -LJO https://github.com/be5invis/Iosevka/releases/download/v11.2.4/ttf-iosevka-term-11.2.4.zip
