@@ -9,6 +9,8 @@ sudo apt install tree -y
 sudo apt install tmux -y
 sudo apt install qemu -y
 sudo apt install virt-manager -y
+sudo apt install maim -y
+sudo apt install picom -y
 sudo snap install brave
 sudo snap install code --classic
 sudo snap install discord
@@ -50,3 +52,13 @@ cp ./dotfiles/.zshrc ~/.zshrc
 # micro text editor
 curl https://getmic.ro | bash
 sudo mv micro /usr/local/bin
+
+# noisetorch
+curl -o ~/Downloads/NoiseTorch_x64_v0.12.2.tgz -LJO https://github.com/noisetorch/NoiseTorch/releases/download/v0.12.2/NoiseTorch_x64_v0.12.2.tgz
+tar -C $HOME -h -xzf ~/Downloads/NoiseTorch_x64_v0.12.2.tgz
+rm ~/Downloads/NoiseTorch_x64_v0.12.2.tgz
+
+# i3wm
+sudo apt install i3 -y
+mkdir ~/.config/i3/
+cp ./dotfiles/i3config ~/.config/i3/config
