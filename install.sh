@@ -11,6 +11,7 @@ sudo apt install qemu -y
 sudo apt install virt-manager -y
 sudo apt install maim -y
 sudo apt install picom -y
+sudo apt install pcmanfm -y
 sudo snap install brave
 sudo snap install code --classic
 sudo snap install discord
