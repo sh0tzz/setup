@@ -63,3 +63,6 @@ rm ~/Downloads/NoiseTorch_x64_v0.12.2.tgz
 sudo apt install i3 -y
 mkdir ~/.config/i3/
 cp ./dotfiles/i3config ~/.config/i3/config
+
+# monitor setup
+xrandr --output DP-2 --left-of DP-0
