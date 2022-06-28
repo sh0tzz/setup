@@ -8,10 +8,13 @@ sudo apt install git -y
 sudo apt install kitty -y
 mkdir ~/.config/kitty
 cp ./dotfiles/kitty.conf ~/.config/kitty/kitty.conf
-curl -o ~/Downloads/iosevka-term-font.zip -LJO https://github.com/be5invis/Iosevka/releases/download/v11.2.4/ttf-iosevka-term-11.2.4.zip
+curl -o ~/Downloads/iosevka.zip -LJO https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Iosevka.zip
 mkdir -p ~/.local/share/fonts
-unzip ~/Downloads/iosevka-term-font.zip -d ~/.local/share/fonts
-rm ~/Downloads/iosevka-term-font.zip
+mkdir ~/Downloads/iosevka
+unzip ~/Downloads/iosevka.zip -d ~/.local/share/fonts/
+rm ~/Downloads/iosevka.zip
+rm -r ~/Downloads/iosevka
+git clone --depth 1 https://github.com/dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
 
 # zsh
 sudo apt install zsh -y
