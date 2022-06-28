@@ -1,20 +1,8 @@
 sudo apt update
+sudo apt upgrade
+
 sudo apt install curl -y
 sudo apt install git -y
-sudo apt install build-essential -y
-sudo apt install python3-pip -y
-sudo apt install obs-studio -y
-sudo apt install xclip -y
-sudo apt install tree -y
-sudo apt install tmux -y
-sudo apt install qemu -y
-sudo apt install virt-manager -y
-sudo apt install maim -y
-sudo apt install picom -y
-sudo apt install pcmanfm -y
-sudo snap install brave
-sudo snap install code --classic
-sudo snap install discord
 
 # kitty terminal emulator
 sudo apt install kitty -y
@@ -66,3 +54,19 @@ cp ./dotfiles/i3config ~/.config/i3/config
 
 # monitor setup
 xrandr --output DP-2 --left-of DP-0
+
+# bulk install
+sudo apt install build-essential -y
+sudo apt install python3-pip -y
+sudo apt install obs-studio -y
+sudo apt install xclip -y
+sudo apt install tree -y
+sudo apt install tmux -y
+sudo apt install qemu -y
+sudo apt install virt-manager -y
+sudo apt install maim -y
+sudo apt install picom -y
+sudo apt install pcmanfm -y
+sudo snap install brave
+sudo snap install code --classic
+sudo snap install discord
