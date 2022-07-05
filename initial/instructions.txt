@@ -1,0 +1,104 @@
+STEPS 1-5 SHOULD BE DONE AS ROOT
+to drop down to root use:
+su -
+and NOT just `su`!!!!
+
+<user> - refers to the user account you are using
+<device> - refers to the USB drive (more explained in step 1)
+<wifi_ssid> - refers to wifi you are connecting to (more explained in step 4)
+
+--------------------------------------------------
+ 1. COPYING FILES
+--------------------------------------------------
+log in to user account
+plug in usb drive
+drop to root:
+su -
+cd into users home and prepare mount point:
+cd /home/<user>
+mkdir mount
+find usb drive that will corrspond to <device>:
+lsblk
+mount the device:
+mount <device> ./mount
+cd into mounted usb:
+cd mount
+copy debscripts folder to /home/user
+cp debscripts ..
+exit mount point:
+cd ..
+unmount usb drive:
+umount <device>
+plug usb drive out
+cd into debscripts:
+cd debscripts
+make all scripts executable:
+chmod +x *-script.sh
+
+--------------------------------------------------
+ 2. BASIC NETWORK CONNECTIVITY TO GET APT WORKING
+--------------------------------------------------
+all apt sources were automatically commented out by the installer
+because it poses a security risk when set without verification.
+this step sets apt sources and enables internet access via usb tethering.
+run 2-script.sh: (from /home/<user>/debscripts)
+./1-script.sh
+reboot for devices to reload:
+reboot
+
+--------------------------------------------------
+ 3. GET PROPRIETARY DRIVERS FOR TL-WN821N
+--------------------------------------------------
+the TL-WN821N doesnt work with open source drivers,
+so proprietary ones are needed. since the adapter
+uses the rtl8192 chipset drivers can be found at
+http://github.com/clnhub/rtl8192eu-linux
+this step installs those drivers and networkmanager
+(execute as root from /home/<user>/debscripts)
+connect wifi adapter
+run 3-script.sh:
+./3-script.sh
+reboot to enable new drivers:
+reboot
+
+--------------------------------------------------
+ 4. CONNECT TO WIFI
+--------------------------------------------------
+(execute as root with the wifi adapter connected)
+check device status:
+nmcli radio wifi
+  if output is disabled:
+nmcli radio wifi on
+scan for networks:
+nmcli dev wifi list
+connect to the network:
+nmcli dev wifi connect <wifi_ssid> password <wifi_password>
+  where <wifi_ssid> is the ssid of your network
+  and <wifi_password> is the password of that network
+
+--------------------------------------------------
+ 5. SETUP SUDO, XORG, i3, GPU DRIVERS, AUDIO
+--------------------------------------------------
+(execute as root from /home/<user>/debscripts)
+run script 5:
+./5-script.sh
+  when prompted enter username
+relog to see changes:
+	exit (exits root)
+	exit (exits user)
+	log in again
+start xorg:
+	startx
+go through i3 setup dialog
+open terminal:
+	i3_modkey + enter
+open nvidia drivers site in chromium:
+	chromium nvidia.com/drivers
+find the correct drivers and download them
+reboot to kill xorg and load pulseaudio
+go to downloads:
+	cd Downloads
+make the downloaded file executable:
+	chmod +x NVIDIA-Linux-x86_64-515.57.run
+run it:
+	sudo ./NVIDIA-Linux-x86_64-515.57.run
