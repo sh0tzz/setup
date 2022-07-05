@@ -1,0 +1,3 @@
+#!/usr/bin/zsh
+rm ~/.config/nitrogen/wallpapers/*
+cp ../wallpapers/* ~/.config/nitrogen/wallpapers/
