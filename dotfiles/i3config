@@ -92,9 +92,10 @@ assign [class="kitty"] $ws2
 assign [class="NoiseTorch"] $ws9
 assign [class="discord"] $ws10
 
-exec discord
-exec noisetorch
 exec picom
-for_window [class="NoiseTorch"] move to workspace $ws9
-exec brave
+exec discord
+# exec noisetorch
+# for_window [class="NoiseTorch"] move to workspace $ws9
+exec chromium
 exec kitty
+nitrogen --restore
