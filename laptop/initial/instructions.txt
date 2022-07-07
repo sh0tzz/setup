@@ -1,0 +1,90 @@
+STEPS 1-5 SHOULD BE DONE AS ROOT
+to drop down to root use:
+	su -
+and NOT just `su`!!!!
+
+<user> - refers to the user account you are using
+<device> - refers to the USB drive (more explained in step 1)
+<wifi_ssid> - refers to wifi you are connecting to (more explained in step 4)
+
+--------------------------------------------------
+ 1. COPYING FILES
+--------------------------------------------------
+log in to user account
+plug in usb drive
+drop to root:
+	su -
+cd into users home and prepare mount point:
+	cd /home/<user>
+	mkdir mount
+find usb drive that will corrspond to <device>:
+	lsblk
+mount the device:
+	mount <device> ./mount
+	cd into mounted usb:
+	cd mount
+copy setup folder to /home/user
+	cp setup ..
+exit mount point:
+	cd ..
+unmount usb drive:
+	umount <device>
+plug usb drive out
+cd into setip:
+	cd setup
+cd into the needed folder:
+	cd main
+	or
+	cd laptop
+make all scripts executable:
+	chmod +x *.sh
+
+--------------------------------------------------
+ 2. BASIC NETWORK CONNECTIVITY TO GET APT WORKING
+--------------------------------------------------
+all apt sources were automatically commented out by the installer
+because it poses a security risk when set without verification.
+this step sets apt sources and enables internet access via usb tethering.
+run 2-script.sh:
+	./2-script.sh
+reboot for devices to reload:
+reboot
+
+--------------------------------------------------
+ 3. GET INTEL WIFI CARD FIRMWARE
+--------------------------------------------------
+run 3-script.sh:
+	./3-script.sh
+reboot to enable new drivers:
+	reboot
+
+--------------------------------------------------
+ 4. CONNECT TO WIFI
+--------------------------------------------------
+check device status:
+	nmcli radio wifi
+  if output is disabled:
+	nmcli radio wifi on
+scan for networks:
+	nmcli dev wifi list
+connect to the network:
+	nmcli dev wifi connect <wifi_ssid> password <wifi_password>
+  where <wifi_ssid> is the ssid of your network
+  and <wifi_password> is the password of that network
+
+--------------------------------------------------
+ 5. SETUP SUDO, XORG, i3, AUDIO
+--------------------------------------------------
+run script 5:
+./5-script.sh
+  when prompted enter username
+relog to see changes:
+	exit (exits root)
+	exit (exits user)
+	log in again
+start xorg:
+	startx
+go through i3 setup dialog
+open terminal:
+	i3_modkey + enter
+reboot to load pulseaudio

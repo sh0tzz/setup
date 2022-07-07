@@ -98,4 +98,5 @@ exec discord
 # for_window [class="NoiseTorch"] move to workspace $ws9
 exec chromium
 exec kitty
-nitrogen --restore
+exec "nitrogen --restore"
+exec "xrandr --output DP-0 --right-of DP-2"
