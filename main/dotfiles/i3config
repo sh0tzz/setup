@@ -1,4 +1,4 @@
-set $mod mod1
+set $mod mod4
 
 hide_edge_borders smart
 font pango: monospace 8
